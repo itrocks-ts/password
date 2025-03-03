@@ -1,0 +1,61 @@
+{
+	"author": {
+		"name": "Baptiste Pillot",
+		"email": "baptiste@pillot.fr"
+	},
+	"dependencies": {
+		"@itrocks/class-type": "latest",
+		"@itrocks/decorator": "latest"
+	},
+	"description": "@Password() decorator for secure formatting of password fields",
+	"devDependencies": {
+		"typescript": "~5.6"
+	},
+	"engines": {
+		"node": ">=18"
+	},
+	"exports": {
+		".": {
+			"require": "./cjs/password.js",
+			"types": "./cjs/password.d.ts"
+		},
+		"./transformers": {
+			"require": "./cjs/transformers.js",
+			"types": "./cjs/transformers.d.ts"
+		}
+	},
+	"files": [
+		"LICENSE",
+		"README.md",
+		"cjs/*",
+		"!*.map"
+	],
+	"homepage": "https://it.rocks",
+	"keywords": [
+		"backend",
+		"decorator",
+		"formatting",
+		"hashing",
+		"it.rocks",
+		"property",
+		"password",
+		"transformer",
+		"validation",
+		"validator"
+	],
+	"license": "ISC",
+	"name": "@itrocks/password",
+	"optionalDependencies": {
+		"@itrocks/property-view": "latest",
+		"@itrocks/transformer": "latest",
+		"@itrocks/translate": "latest"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/itrocks-ts/password.git"
+	},
+	"scripts": {
+		"build": "tsc -p tsconfig.json"
+	},
+	"version": "0.0.1"
+}

@@ -57,5 +57,6 @@
 	"scripts": {
 		"build": "tsc -p tsconfig.json"
 	},
-	"version": "0.0.1"
+	"types": "./cjs/password.d.ts",
+	"version": "0.0.2"
 }

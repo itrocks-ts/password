@@ -15,7 +15,6 @@ export function passwordDependsOn(dependencies: Partial<Dependencies>)
 	Object.assign(depends, dependencies)
 }
 
-export default Password
 export function Password<T extends object>(value = true)
 {
 	const parent = decorate<T>(PASSWORD, value)

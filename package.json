@@ -5,7 +5,11 @@
 	},
 	"dependencies": {
 		"@itrocks/class-type": "latest",
-		"@itrocks/decorator": "latest"
+		"@itrocks/decorator": "latest",
+		"@itrocks/property-view": "latest",
+		"@itrocks/rename": "latest",
+		"@itrocks/transformer": "latest",
+		"@itrocks/translate": "latest"
 	},
 	"description": "@Password() decorator for secure formatting of password fields",
 	"devDependencies": {
@@ -58,5 +62,5 @@
 		"build": "tsc"
 	},
 	"types": "./cjs/password.d.ts",
-	"version": "0.0.4"
+	"version": "0.0.5"
 }

@@ -1,5 +1,9 @@
-import { KeyOf, ObjectOrType }   from '@itrocks/class-type'
-import { decorate, decoratorOf } from '@itrocks/decorator/property'
+import { KeyOf }              from '@itrocks/class-type'
+import { ObjectOrType }       from '@itrocks/class-type'
+import { decorate }           from '@itrocks/decorator/property'
+import { DecorateCaller }     from '@itrocks/decorator/property'
+import { decoratorOf }        from '@itrocks/decorator/property'
+import { parameterDecorator } from '@itrocks/decorator/property'
 
 const PASSWORD = Symbol('password')
 
@@ -15,13 +19,14 @@ export function passwordDependsOn(dependencies: Partial<Dependencies>)
 	Object.assign(depends, dependencies)
 }
 
-export function Password<T extends object>(value = true)
+export function Password<T extends object>(value = true): DecorateCaller<T>
 {
 	const parent = decorate<T>(PASSWORD, value)
 	return value
-		? (target: T, property: KeyOf<T>) => {
-			parent(target, property)
+		? (target, property, index) => {
+			[target, property] = parameterDecorator(PASSWORD, target, property, index)
 			depends.setTransformers?.(target, property)
+			parent(target, property)
 		}
 		: parent
 }

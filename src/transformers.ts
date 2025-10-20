@@ -2,7 +2,7 @@ import { KeyOf, ObjectOrType }     from '@itrocks/class-type'
 import { displayOf }               from '@itrocks/property-view'
 import { toCssId, toField }        from '@itrocks/rename'
 import { EDIT, HTML, IGNORE }      from '@itrocks/transformer'
-import { INPUT, JSON }             from '@itrocks/transformer'
+import { INPUT, JSON, OUTPUT }     from '@itrocks/transformer'
 import { setPropertyTransformer }  from '@itrocks/transformer'
 import { setPropertyTransformers } from '@itrocks/transformer'
 import { tr }                      from '@itrocks/translate'
@@ -30,9 +30,9 @@ export function inputPassword(value: string)
 export function setPasswordHtmlTransformers<T extends object>(target: ObjectOrType<T>, property: KeyOf<T>)
 {
 	setPropertyTransformers(target, property, [
-		{ format: HTML, direction: EDIT,  transformer: editPassword<T> },
-		{ format: HTML, direction: INPUT, transformer: inputPassword },
-		{ format: HTML,                   transformer: (value: string) => value.length ? '***********' : '' }
+		{ format: HTML, direction: EDIT,   transformer: editPassword<T> },
+		{ format: HTML, direction: INPUT,  transformer: inputPassword },
+		{ format: HTML, direction: OUTPUT, transformer: (value: string) => value.length ? '***********' : '' }
 	])
 }
 

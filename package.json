@@ -13,7 +13,7 @@
 	},
 	"description": "@Password() decorator for secure formatting of password fields",
 	"devDependencies": {
-		"typescript": "~5.8"
+		"typescript": "~5.9"
 	},
 	"engines": {
 		"node": ">=18"
@@ -62,5 +62,5 @@
 		"build": "tsc"
 	},
 	"types": "./cjs/password.d.ts",
-	"version": "0.0.7"
+	"version": "0.0.8"
 }

@@ -43,6 +43,7 @@
 		"it.rocks",
 		"property",
 		"password",
+		"security",
 		"transformer",
 		"validation",
 		"validator"
@@ -62,5 +63,5 @@
 		"build": "tsc"
 	},
 	"types": "./cjs/password.d.ts",
-	"version": "0.0.8"
+	"version": "0.0.9"
 }

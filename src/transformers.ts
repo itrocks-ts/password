@@ -1,4 +1,4 @@
-import { KeyOf, ObjectOrType }     from '@itrocks/class-type'
+import { ObjectOrType }            from '@itrocks/class-type'
 import { displayOf }               from '@itrocks/property-view'
 import { toCssId, toField }        from '@itrocks/rename'
 import { EDIT, HTML, IGNORE }      from '@itrocks/transformer'
@@ -10,7 +10,7 @@ import { createHash }              from 'node:crypto'
 
 const lfTab = '\n\t\t\t\t'
 
-export function editPassword<T extends object>(value: string, target: ObjectOrType<T>, property: KeyOf<T>)
+export function editPassword<T extends object>(value: string, target: ObjectOrType<T>, property: keyof T)
 {
 	const fieldId    = toCssId(property)
 	const fieldName  = toField(property)
@@ -27,7 +27,7 @@ export function inputPassword(value: string)
 		: createHash('sha512').update(value, 'utf8').digest('hex')
 }
 
-export function setPasswordHtmlTransformers<T extends object>(target: ObjectOrType<T>, property: KeyOf<T>)
+export function setPasswordHtmlTransformers<T extends object>(target: ObjectOrType<T>, property: keyof T)
 {
 	setPropertyTransformers(target, property, [
 		{ format: HTML, direction: EDIT,   transformer: editPassword<T> },
@@ -36,12 +36,12 @@ export function setPasswordHtmlTransformers<T extends object>(target: ObjectOrTy
 	])
 }
 
-export function setPasswordJsonTransformers<T extends object>(target: ObjectOrType<T>, property: KeyOf<T>)
+export function setPasswordJsonTransformers<T extends object>(target: ObjectOrType<T>, property: keyof T)
 {
 	setPropertyTransformer(target, property, JSON, '', (value: string) => (value === '') ? '*EMPTY*' : '*PASSWORD*')
 }
 
-export function setPasswordTransformers<T extends object>(target: ObjectOrType<T>, property: KeyOf<T>)
+export function setPasswordTransformers<T extends object>(target: T, property: keyof T)
 {
 	setPasswordHtmlTransformers(target, property)
 	setPasswordJsonTransformers(target, property)
